@@ -98,10 +98,10 @@ class dif:
                         if err < ref:
                             if show_output:
                                 dif._show_img_figs(imageMatrix_A, imageMatrix_B, err)
-                                dif._show_file_info(str("..." + directory_A[-35:]) + "/" + filenames_A[count_A],
-                                                   str("..." + directory_A[-35:]) + "/" + filenames_A[count_B])
+                                dif._show_file_info(str("..." + filenames_A[count_A]),
+                                                   str("..." + filenames_A[count_B]))
                             if filenames_A[count_A] in result.keys():
-                                result[filenames_A[count_A]]["duplicates"] = result[filenames_A[count_A]]["duplicates"] + [directory_A + "/" + filenames_A[count_B]]
+                                result[filenames_A[count_A]]["duplicates"] = result[filenames_A[count_A]]["duplicates"] + [filenames_A[count_B]]
                             else:
                                 result[filenames_A[count_A]] = {"location" : filenames_A[count_A],
                                                                     "duplicates" : [ filenames_A[count_B]]
@@ -280,5 +280,6 @@ class dif:
 
 if __name__ == "__main__":
     import sys
-    search = dif(directory_A=sys.argv[1], directory_B=sys.argv[2],delete=True, show_output=True)
+    # search = dif(directory_A=sys.argv[1], directory_B=sys.argv[2],delete=True, show_output=True)
+    search = dif(directory_A=sys.argv[1] ,delete=True, show_output=True)
     print(search.result)
